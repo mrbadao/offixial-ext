@@ -1,0 +1,22 @@
+{
+	"name": "Officical CMS Chrome App",
+	"description": "Officical CMS Chrome App",
+	"version": "0.1",
+	"app": {
+		"background": {
+			"scripts": [
+				"background.js"
+			]
+		}
+	},
+	"manifest_version": 2,
+	"icons": {
+		"16": "app/assets/img/ico/favicon_16.png",
+		"128": "app/assets/img/ico/favicon_120.png"
+	},
+	"permissions": [
+		"storage",
+		"notifications",
+		"http://localhost/"
+	]
+}
