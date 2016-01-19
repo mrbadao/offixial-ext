@@ -1,9 +1,11 @@
 <div class="col-sm-12 col-xs-12">
 	<div class="container">
+		<ng-include
+				src="'app/shared/sidebar/sidebar.html'">
+		</ng-include>
 		<form class="form-signin" ng-submit="loginFormSubmit()"
 			  name="loginForm"
-			  ng-controller="login
-">
+			  ng-controller="login">
 
 			<h2 class="form-signin-heading text-center">System Login</h2>
 			<label for="inputUsername" class="sr-only">Username</label>
