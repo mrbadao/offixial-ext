@@ -1,18 +1,18 @@
 /**
- * Created by hieunc on 05/01/2016.
+ *  @project: offixial-ext
+ *  @uthor: hieunc.
+ *  @created 19/01/2016.
  */
-angular.module('officialChromeApp', [
-	'angular.css.injector',
-	'ui.router',
-	'modules.user.controllers',
-	'modules.media.controllers'
+
+angular.module('app', [
+	'ngRoute',
+	'modules.user'
 ], function ($provide) {
 	$provide.decorator('$window', function ($delegate) {
 		$delegate.history = null;
 		return $delegate;
 	});
-}).
-constant("Config", {
+}).constant("Config", {
 	"url": "http://localhost/api-official/api/",
 	"appIco": {
 		"ico_128": "resources/img/app_icon_128.png",
@@ -32,38 +32,33 @@ constant("Config", {
 	}
 }).
 config([
-	'$stateProvider',
-	'$urlRouterProvider',
+	'$routeProvider',
 	'$httpProvider',
-	'cssInjectorProvider',
-	function ($stateProvider, $urlRouterProvider, $httpProvider, cssInjectorProvider) {
+	//'cssInjectorProvider',
+	function ($routeProvider, $httpProvider) {
 		$httpProvider.defaults.useXDomain = true;
 		delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
-		cssInjectorProvider.setSinglePageMode(true);
+		//cssInjectorProvider.setSinglePageMode(true);
 
-		$urlRouterProvider.otherwise("/home");
-		$stateProvider
-				.state('home', {
-					url: "/home",
-					templateUrl: "app/modules/user/views/login.html",
-					controller: "userCtrl"
+		$routeProvider
+				.when("/login", {
+					caseInsensitiveMatch: true,
+					templateUrl: "app/modules/user/view/login.html",
+					controller: "login"
 				})
-				.state('media', {
-					url: "/media",
-					//templateUrl: "app/modules/media/views/media.html",
-					template: '<h1>msdia</h1>',
-					controller: "mediaCtrl"
-				})
-				.state('media.create', {
-					url: "/media/create",
-					//templateUrl: "app/modules/media/views/create.html",
-					template: '<h1>create</h1>',
-					controller: "mediaCtrl"
-				});
+				//.when("/media", {
+				//	title: "Official CMS login",
+				//	caseInsensitiveMatch: true,
+				//	templateUrl: "app/modules/media/views/media.html",
+				//	controller: "mediaCtrl"
+				//})
+				.otherwise({redirectTo: '/login'});
+	}
+]);
 
-	}]).
-run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
-	$rootScope.$state = $state;
-	$rootScope.$stateParams = $stateParams;
-}]);
+//		.
+//run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
+//	$rootScope.$state = $state;
+//	$rootScope.$stateParams = $stateParams;
+//}]);
