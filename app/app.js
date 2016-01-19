@@ -4,7 +4,7 @@
  *  @created 19/01/2016.
  */
 
-angular.module('app', [
+angular.module('officialChromeExt', [
 	'ngRoute',
 	'modules.user'
 ], function ($provide) {

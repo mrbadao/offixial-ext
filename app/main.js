@@ -32,5 +32,5 @@ require.config({
 require([
 	'app'
 ], function () {
-	angular.bootstrap(document, ['app']);
+	angular.bootstrap(document, ['officialChromeExt']);
 });
