@@ -69,7 +69,6 @@ run([
 	function ($rootScope, cssInjector, Config) {
 		$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
 			if (typeof current.$$route != "undefined") {
-				console.log(current.$$route);
 				angular.forEach(Config.modules.default.cssFiles, function (css, idx) {
 					cssInjector.add(css);
 				});
