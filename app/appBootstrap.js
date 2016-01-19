@@ -8,9 +8,14 @@ require.config({
 		"angular": "../vendor/node_modules/angular/angular",
 		"angularRoute": "../vendor/node_modules/angular-route/angular-route",
 		"angularCssInjector": "../vendor/node_modules/angular-css-injector/angular-css-injector",
+
+		"chromeServiceStorage": "lib/chrome/services/storage",
+		//"angularCssInjector": "../vendor/node_modules/angular-css-injector/angular-css-injector",
+
 		"moduleUser": "module/user/module.user",
 		"moduleUserController": "module/user/controller/module.user.controller",
 		"moduleUserService": "module/user/service/module.user.service",
+
 		"app": "app",
 		"bootstrap": []
 	},
@@ -23,7 +28,8 @@ require.config({
 		],
 		"moduleUserController": {
 			deps: [
-				'angular'
+				'angular',
+				'chromeServiceStorage'
 			]
 		},
 		"moduleUserService": {

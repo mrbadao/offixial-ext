@@ -1,1 +1,40 @@
-<h1>asdasd</h1>
+<div class="col-sm-12 col-xs-12">
+	<div class="container">
+		<form class="form-signin" ng-submit="loginFormSubmit()"
+			  name="loginForm"
+			  ng-controller="login
+">
+
+			<h2 class="form-signin-heading text-center">System Login</h2>
+			<label for="inputUsername" class="sr-only">Username</label>
+			<input id="inputUsername"
+				   name="user[username]"
+				   ng-model="user.username"
+				   class="form-control"
+				   placeholder="Username"
+				   required=""
+				   autofocus=""
+				   type="text">
+			<label for="inputPassword" class="sr-only">Password</label>
+			<input id="inputPassword"
+				   ng-model="user.password"
+				   name="user[password]"
+				   class="form-control"
+				   placeholder="Password"
+				   required="" type="password">
+
+			<div class="checkbox">
+				<label>
+					<input name="user[remember]" value="remember-me" type="checkbox"> Remember me
+				</label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Login</button>
+			<div ng-show="loginForm.$error.loginFailed "
+				 ng-if="loginForm.submit.$dirty"
+				 role="alert"
+				 class="col-sm-12 col-xs-12 alert alert-danger">
+				<span>{{loginResultData.errors[0]}}</span>
+			</div>
+		</form>
+	</div>
+</div>

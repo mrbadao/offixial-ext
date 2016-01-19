@@ -1,7 +1,7 @@
 /**
  * Created by hieunc on 05/01/2016.
  */
-angular.module("lib.chrome.services", [])
+angular.module("lib.chrome.service", [])
 		.factory("storage", function () {
 			var service = {};
 

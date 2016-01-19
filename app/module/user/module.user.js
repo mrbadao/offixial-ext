@@ -4,6 +4,5 @@
  *  @created 19/01/2016.
  */
 angular.module('module.user', [
-	'module.user.controller',
-	'module.user.service'
+	'module.user.controller'
 ]);
