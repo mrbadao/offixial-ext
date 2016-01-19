@@ -7,7 +7,7 @@
 angular.module('officialChromeExt', [
 	'ngRoute',
 	'angular.css.injector',
-	'modules.user.controller'
+	'module.user'
 ], function ($provide) {
 	$provide.decorator('$window', function ($delegate) {
 		$delegate.history = null;
@@ -55,7 +55,7 @@ config([
 		$routeProvider
 				.when("/login", {
 					caseInsensitiveMatch: true,
-					templateUrl: "app/modules/user/view/login.html",
+					templateUrl: "app/module/user/view/login.html",
 					module: "user",
 					controller: "login"
 				})

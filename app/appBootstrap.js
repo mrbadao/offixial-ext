@@ -3,15 +3,15 @@
  */
 
 require.config({
+	baseUrl: 'app',
 	paths: {
 		"angular": "../vendor/node_modules/angular/angular",
 		"angularRoute": "../vendor/node_modules/angular-route/angular-route",
 		"angularCssInjector": "../vendor/node_modules/angular-css-injector/angular-css-injector",
+		"moduleUser": "module/user/module.user",
+		"moduleUserController": "module/user/controller/module.user.controller",
+		"moduleUserService": "module/user/service/module.user.service",
 		"app": "app",
-		"modulesUser": [
-			"../app/modules/user/controller/module.user.controller",
-			"../app/modules/user/service/module.user.service"
-		],
 		"bootstrap": []
 	},
 	shim: {
@@ -26,10 +26,23 @@ require.config({
 				'angular',
 				'angularRoute',
 				'angularCssInjector',
-				'modulesUser'
+				'moduleUser'
 			]
 		},
-		"modulesUser": {
+		"moduleUser": {
+			deps: [
+				'angular',
+				'moduleUserController',
+				'moduleUserService'
+			]
+		},
+		"moduleUserController": {
+			deps: [
+				'angular'
+
+			]
+		},
+		"moduleUserService": {
 			deps: [
 				'angular'
 			]
