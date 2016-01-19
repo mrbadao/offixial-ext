@@ -6,7 +6,8 @@
 
 angular.module('officialChromeExt', [
 	'ngRoute',
-	'modules.user'
+	'angular.css.injector',
+	'modules.user.controller'
 ], function ($provide) {
 	$provide.decorator('$window', function ($delegate) {
 		$delegate.history = null;
@@ -19,46 +20,70 @@ angular.module('officialChromeExt', [
 		"ico_16": "resources/img/app_icon_16.png"
 	},
 	modules: {
-		user: {
+		default: {
 			cssFiles: [
-				"app/modules/user/resources/css/login.css"
+				"vendor/node_modules/bootstrap/dist/css/bootstrap.min.css",
+				"vendor/node_modules/bootstrap/dist/css/bootstrap-theme.min.css"
 			]
 		},
+		user: {
+			login: {
+				cssFiles: [
+					"app/assets/css/user/login.css"
+				]
+			}
+		},
 		media: {
-			cssFiles: [
-				"app/modules/media/resources/css/media.css"
-			]
+			login: {
+				cssFiles: [
+					"app/modules/media/resources/css/media.css"
+				]
+			}
 		}
 	}
 }).
 config([
 	'$routeProvider',
 	'$httpProvider',
-	//'cssInjectorProvider',
-	function ($routeProvider, $httpProvider) {
+	'cssInjectorProvider',
+	function ($routeProvider, $httpProvider, cssInjectorProvider) {
 		$httpProvider.defaults.useXDomain = true;
 		delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
-		//cssInjectorProvider.setSinglePageMode(true);
+		cssInjectorProvider.setSinglePageMode(true);
 
 		$routeProvider
 				.when("/login", {
 					caseInsensitiveMatch: true,
 					templateUrl: "app/modules/user/view/login.html",
+					module: "user",
 					controller: "login"
 				})
-				//.when("/media", {
-				//	title: "Official CMS login",
-				//	caseInsensitiveMatch: true,
-				//	templateUrl: "app/modules/media/views/media.html",
-				//	controller: "mediaCtrl"
-				//})
 				.otherwise({redirectTo: '/login'});
 	}
-]);
+]).
+run([
+	'$rootScope',
+	'cssInjector',
+	'Config',
+	function ($rootScope, cssInjector, Config) {
+		$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+			if (typeof current.$$route != "undefined") {
+				console.log(current.$$route);
+				angular.forEach(Config.modules.default.cssFiles, function (css, idx) {
+					cssInjector.add(css);
+				});
 
-//		.
-//run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
-//	$rootScope.$state = $state;
-//	$rootScope.$stateParams = $stateParams;
-//}]);
+				if (typeof current.$$route.module != "undefined" &&
+						typeof current.$$route.controller != "undefined" &&
+						typeof Config.modules[current.$$route.module] != "undefined" &&
+						typeof Config.modules[current.$$route.module][current.$$route.controller] != "undefined"
+				) {
+					angular.forEach(Config.modules[current.$$route.module][current.$$route.controller].cssFiles, function (css, idx) {
+						cssInjector.add(css);
+					});
+				}
+			}
+		})
+	}
+]);
