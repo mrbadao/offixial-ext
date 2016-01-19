@@ -21,12 +21,14 @@ require.config({
 		"angularCssInjector": [
 			'angular'
 		],
-		"app": {
+		"moduleUserController": {
 			deps: [
-				'angular',
-				'angularRoute',
-				'angularCssInjector',
-				'moduleUser'
+				'angular'
+			]
+		},
+		"moduleUserService": {
+			deps: [
+				'angular'
 			]
 		},
 		"moduleUser": {
@@ -36,23 +38,25 @@ require.config({
 				'moduleUserService'
 			]
 		},
-		"moduleUserController": {
+		"app": {
 			deps: [
-				'angular'
-
-			]
-		},
-		"moduleUserService": {
-			deps: [
-				'angular'
+				'angular',
+				'angularRoute',
+				'angularCssInjector',
+				'moduleUser'
 			]
 		}
 
+
 	}
-});
+})
+;
 
 require([
 	'app'
 ], function () {
+	//angular.element(document).ready(function() {
 	angular.bootstrap(document, ['officialChromeExt']);
+	//});
+	//angular.bootstrap(document, ['officialChromeExt']);
 });

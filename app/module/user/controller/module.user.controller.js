@@ -3,7 +3,7 @@
  *  @uthor: hieunc.
  *  @created 19/01/2016.
  */
-angular.module('module.user').
+angular.module('module.user.controller',[]).
 controller("login", function ($scope) {
 	$scope.user = {
 		username: 'hieunc',

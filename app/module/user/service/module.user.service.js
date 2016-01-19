@@ -3,8 +3,8 @@
  *  @uthor: hieunc.
  *  @created 19/01/2016.
  */
-angular.module("module.user").
-factory("service", function ($http, Config) {
+angular.module("module.user.service", []).
+factory("userService", function ($http, Config) {
 	var services = {};
 
 	//call login API
