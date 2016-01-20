@@ -13,8 +13,7 @@ controller("login", function ($scope, storage, userService) {
 			var promiseCheckToken = userService.checkToken(object.Auth.api_access_key);
 			promiseCheckToken.then(function (d) {
 				if (d.data.status == 200 && d.data.data == object.Auth.api_access_key) {
-					//$location.path("/category");
-					console.log(1);
+					$location.path("/category");
 				}
 			}, function (d) {
 				console.log(d);

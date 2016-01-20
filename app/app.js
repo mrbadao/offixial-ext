@@ -82,6 +82,16 @@ run([
 			}
 		];
 
+		$rootScope.sidebar = [
+			{icoClass: "glyphicon-home", location: 'home', link: "/home"},
+			{icoClass: "glyphicon-th-list", location: 'category', link: "/category"},
+			{icoClass: "glyphicon-pencil", location: 'article', link: "/article"},
+			{icoClass: "glyphicon-film", location: 'media', link: "/media"},
+			{icoClass: "glyphicon-cog", location: 'setting', link: "/setting"}
+		];
+
+		$rootScope.currLocation = 'home';
+
 		$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
 			if (typeof current.$$route != "undefined") {
 				angular.forEach(Config.modules.default.cssFiles, function (css, idx) {
@@ -96,7 +106,7 @@ run([
 					angular.forEach(Config.modules[current.$$route.module][current.$$route.controller].cssFiles, function (css, idx) {
 						cssInjector.add(css);
 					});
-
+					$rootScope.currLocation = current.$$route.module;
 					$rootScope.breadcrumb.push({
 						label: current.$$route.module,
 						link: current.$$route.originalPath
