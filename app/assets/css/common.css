@@ -96,3 +96,8 @@
 	background-color: #eeeeee;
 	cursor: pointer;
 }
+
+.breadcrumb li,
+.breadcrumb li a {
+	text-transform: capitalize;
+}

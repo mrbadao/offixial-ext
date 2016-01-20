@@ -1,7 +1,8 @@
-<div class="row">
+<div class="row" ng-show="breadcrumb.length > 1">
 	<ol class="breadcrumb">
-		<li><a href="#">Home</a></li>
-		<li><a href="#">Media</a></li>
-		<li class="active">Create</li>
+		<li ng-repeat="item in breadcrumb" ng-class="{active: item.link == ''}">
+			<a ng-show="item.link != ''" href="">{{item.label}}</a>
+			{{item.link == ''? item.label : ''}}
+		</li>
 	</ol>
 </div>

@@ -36,7 +36,7 @@ angular.module('officialChromeExt', [
 			}
 		},
 		category: {
-			login: {
+			create: {
 				cssFiles: [
 					"app/assets/css/category/category.css"
 				]
@@ -75,6 +75,13 @@ run([
 	'cssInjector',
 	'Config',
 	function ($rootScope, cssInjector, Config) {
+		$rootScope.breadcrumb = [
+			{
+				label: "home",
+				link: "/home"
+			}
+		];
+
 		$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
 			if (typeof current.$$route != "undefined") {
 				angular.forEach(Config.modules.default.cssFiles, function (css, idx) {
@@ -88,6 +95,14 @@ run([
 				) {
 					angular.forEach(Config.modules[current.$$route.module][current.$$route.controller].cssFiles, function (css, idx) {
 						cssInjector.add(css);
+					});
+
+					$rootScope.breadcrumb.push({
+						label: current.$$route.module,
+						link: current.$$route.originalPath
+					}, {
+						label: current.$$route.controller,
+						link: ""
 					});
 				}
 			}
