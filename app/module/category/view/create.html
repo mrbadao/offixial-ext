@@ -3,13 +3,7 @@
 		<ng-include src="'app/shared/view/sidebar/sidebar.html'"></ng-include>
 
 		<div class="col-xs-8 col-sm-8 main-content">
-			<div class="row">
-				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Media</a></li>
-					<li class="active">Create</li>
-				</ol>
-			</div>
+			<ng-include src="'app/shared/view/breadcrumb/breadcrumb.html'"></ng-include>
 
 			<form enctype="multipart/form-data" class="form-horizontal" ng-submit="submitNewMedia()">
 				<div class="panel panel-default">
