@@ -4,6 +4,8 @@
  *  @created 20/01/2016.
  */
 angular.module('module.category.controller', []).
-controller('create', function ($rootScope, $scope) {
-
+controller('create', function ($rootScope, $scope, $location) {
+	$scope.go = function (path) {
+		$location.path(path);
+	};
 });
