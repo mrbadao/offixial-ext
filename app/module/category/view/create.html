@@ -1,0 +1,60 @@
+<div class="col-sm-12 col-xs-12">
+	<div class="row">
+		<ng-include src="'app/shared/view/sidebar/sidebar.html'"></ng-include>
+
+		<div class="col-xs-8 col-sm-8 main-content">
+			<div class="row">
+				<ol class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Media</a></li>
+					<li class="active">Create</li>
+				</ol>
+			</div>
+
+			<form enctype="multipart/form-data" class="form-horizontal" ng-submit="submitNewMedia()">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Upload new media</h3>
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="control-label col-sm-3 col-xs-12" for="name">
+								Media name <span class="required">*</span>
+							</label>
+
+							<div class="col-sm-8 col-xs-12">
+								<input value=""
+									   ng-model='media.name'
+									   name="name" id="name"
+									   class="form-control"
+									   type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3 col-xs-12" for="name">
+								Description
+							</label>
+
+							<div class="col-sm-8 col-xs-12">
+								<textarea rows="5" name="description" ng-model="media.description" class="form-control textarea-control"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3 col-xs-12" for="name">
+								File <span class="required">*</span>
+							</label>
+
+							<div class="col-sm-8 col-xs-12">
+								<input type="file" accept="image/*" ngf-select="uploadFiles($file, $invalidFiles)" name="file"/>
+							</div>
+						</div>
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary">Upload</button>
+							<button type="reset" class="btn btn-default">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

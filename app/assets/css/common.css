@@ -1,0 +1,98 @@
+.no-padding {
+	padding: 0;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.btn-add {
+	position: absolute;
+	bottom: 15px;
+	right: 15px;
+	padding: 18px 20px;
+	border-radius: 31px;
+	box-shadow: #ddd;
+	background: #1375cb;
+	opacity: 0.75;
+}
+
+.nav-search {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 48px;
+	padding-top: 6px;
+	border-top: 1px solid #dddddd;
+	background: #eeeeee;
+	padding-right: 6px;
+}
+
+.btn-add i {
+	color: #fff;
+}
+
+.btn-add:hover {
+	opacity: 1;
+}
+
+.nav-main {
+	min-height: 600px;
+	border-right: solid 2px #ddd;
+	padding: 0;
+}
+
+.nav-main .nav-tabs {
+	border-bottom: 1px solid #eee;
+	box-shadow: 2px 2px 2px #ddd;
+}
+
+.nav-main .nav-tabs li {
+	display: block;
+	width: 25%;
+}
+
+.nav-main .nav-tabs li.active {
+	margin-bottom: 0;
+}
+
+.nav-main .nav-tabs li a {
+	text-align: center;
+	border-top: 5px solid #fff;
+}
+
+.nav-main .nav-tabs li a:hover {
+	border-top-color: #eeeeee;
+}
+
+.nav-main .nav-tabs li.active a {
+	border: none;
+	border-top: 5px solid #1375cb;
+	border-radius: 0;
+}
+
+.nav-main .nav-tabs li a i {
+	font-size: 25px;
+	color: #555;
+}
+
+.nav-main .nav-tabs li.active a i {
+	color: #1375cb;
+}
+
+.tab-pane {
+	padding-bottom: 48px;
+	height: 497px;
+	overflow-y: scroll;
+}
+
+.tab-pane .media-item {
+	padding: 7px 5px 5px;
+	border-bottom: solid 1px #dddddd;
+}
+
+.tab-pane .media-item:hover,
+.tab-pane .media-item.active {
+	background-color: #eeeeee;
+	cursor: pointer;
+}

@@ -7,7 +7,8 @@
 angular.module('officialChromeExt', [
 	'ngRoute',
 	'angular.css.injector',
-	'module.user'
+	'module.user',
+	'module.category'
 ], function ($provide) {
 	$provide.decorator('$window', function ($delegate) {
 		$delegate.history = null;
@@ -23,7 +24,8 @@ angular.module('officialChromeExt', [
 		default: {
 			cssFiles: [
 				"vendor/node_modules/bootstrap/dist/css/bootstrap.min.css",
-				"vendor/node_modules/bootstrap/dist/css/bootstrap-theme.min.css"
+				"vendor/node_modules/bootstrap/dist/css/bootstrap-theme.min.css",
+				"app/assets/css/common.css"
 			]
 		},
 		user: {
@@ -33,10 +35,10 @@ angular.module('officialChromeExt', [
 				]
 			}
 		},
-		media: {
+		category: {
 			login: {
 				cssFiles: [
-					"app/modules/media/resources/css/media.css"
+					"app/assets/css/category/category.css"
 				]
 			}
 		}
@@ -59,7 +61,13 @@ config([
 					module: "user",
 					controller: "login"
 				})
-				.otherwise({redirectTo: '/login'});
+				.when("/category", {
+					caseInsensitiveMatch: true,
+					templateUrl: "app/module/category/view/create.html",
+					module: "category",
+					controller: "create"
+				})
+				.otherwise({redirectTo: '/category'});
 	}
 ]).
 run([
