@@ -9,5 +9,7 @@ controller('create', function ($rootScope, $scope, $location) {
 		$location.path(path);
 	};
 
-	console.log($location.$$url);
+	//category model
+	$scope.category = {name: '', abbr_cd: ''};
+
 });
