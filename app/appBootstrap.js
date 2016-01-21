@@ -16,9 +16,9 @@ require.config({
 		"moduleUserController": "module/user/controller/module.user.controller",
 		"moduleUserService": "module/user/service/module.user.service",
 
-		"moduleCategory":"module/category/module.category",
-		"moduleCategoryController":"module/category/controller/module.category.controller",
-		"moduleCategoryService":"",
+		"moduleCategory": "module/category/module.category",
+		"moduleCategoryController": "module/category/controller/module.category.controller",
+		"moduleCategoryService": "",
 
 		"app": "app",
 		"bootstrap": []
@@ -30,7 +30,9 @@ require.config({
 		"angularCssInjector": [
 			'angular'
 		],
-
+		"chromeServiceStorage": [
+			'angular'
+		],
 		"moduleUserController": {
 			deps: [
 				'angular',

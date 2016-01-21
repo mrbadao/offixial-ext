@@ -67,7 +67,7 @@ config([
 					module: "category",
 					controller: "create"
 				})
-				.otherwise({redirectTo: '/category'});
+				.otherwise({redirectTo: '/login'});
 	}
 ]).
 run([
