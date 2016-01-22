@@ -5,6 +5,9 @@
 require.config({
 	baseUrl: 'app',
 	paths: {
+		"bootstrap": "../vendor/node_modules/bootstrap/dist/js/bootstrap.min",
+		"jquery": "../vendor/node_modules/jquery/dist/jquery.min",
+
 		"angular": "../vendor/node_modules/angular/angular",
 		"angularRoute": "../vendor/node_modules/angular-route/angular-route",
 		"angularCssInjector": "../vendor/node_modules/angular-css-injector/angular-css-injector",
@@ -21,10 +24,12 @@ require.config({
 		"moduleCategoryService": "",
 
 		"appService": "app.service",
-		"app": "app",
-		"bootstrap": []
+		"app": "app"
 	},
 	shim: {
+		"bootstrap": [
+			'jquery'
+		],
 		"angularRoute": [
 			'angular'
 		],
@@ -67,7 +72,7 @@ require.config({
 		"moduleCategory": {
 			deps: [
 				'angular',
-				'moduleCategoryController',
+				'moduleCategoryController'
 				//'moduleUserService'
 			]
 		},
@@ -79,6 +84,7 @@ require.config({
 				'angular',
 				'angularRoute',
 				'angularCssInjector',
+				'bootstrap',
 				"appService",
 				'moduleUser',
 				'moduleCategory'

@@ -10,6 +10,17 @@ controller('create', function ($rootScope, $scope, $location) {
 	};
 
 	//category model
-	$scope.category = {name: '', abbr_cd: ''};
+	$scope.data = {
+		"Category": {},
+		"CategoryName": [],
+		"CategorySeoLink": []
+	};
+	angular.forEach($rootScope.langs, function (lang, idx) {
+		$scope.data.CategoryName[idx] = {name: lang.Language.id};
+		$scope.data.CategorySeoLink[idx] = {abbr_cd: lang.Language.id};
+	});
 
+	$scope.submitNewCategory = function () {
+		console.log($scope.data);
+	};
 });
