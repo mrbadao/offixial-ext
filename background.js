@@ -40,6 +40,10 @@ chrome.app.runtime.onRestarted.addListener(function () {
 	runApp(true);
 });
 
+function notificationClickHandle(){
+	console.log(chrome.app.window.getAll());
+}
+
 function runApp(readInitialState) {
 	chrome.app.window.create('index.html',
 			{

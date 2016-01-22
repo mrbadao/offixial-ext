@@ -46,8 +46,9 @@ angular.module('officialChromeExt', [
 	},
 	"notificationIdConstant": {
 		"CATEGORY": {
-			"TITLE":"Category Create Successful.",
-			"ID": "notificationCreate_id"
+			"TITLE":"Category",
+			"ID": "notificationCreate_id",
+			"MSG":"Category Create Successful."
 		}
 	}
 }).

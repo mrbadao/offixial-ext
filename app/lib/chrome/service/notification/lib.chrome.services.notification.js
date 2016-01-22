@@ -18,8 +18,12 @@ angular.module("lib.chrome.service.notification", [])
 
 						}
 				);
-				chrome.notifications.onClicked.addListener(function () {
-					chrome.app.window.current().focus();
+				chrome.notifications.onClicked.addListener(function ($id) {
+					chrome.notifications.clear($id);
+					if ((appArr = chrome.app.window.getAll()).length > 0) {
+						appArr[0].focus();
+					}
+
 				});
 			};
 			return service;

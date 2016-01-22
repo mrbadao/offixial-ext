@@ -38,10 +38,11 @@ controller('create', function ($rootScope, $scope, $location, Config, categorySe
 							switch (d.data.status) {
 								case 200:
 									notification.pushPotifications(
-											Config.notificationIdConstant.CATEGORY.ID.replace('id',d.data.data.Category.id),
-											'basic', Config.notificationIdConstant.CATEGORY.TITLE,
+											Config.notificationIdConstant.CATEGORY.ID.replace('id', d.data.data.Category.id),
+											'basic',
+											Config.notificationIdConstant.CATEGORY.TITLE,
 											Config.appIco.ico_128,
-											'adad'
+											Config.notificationIdConstant.CATEGORY.MSG
 									);
 									break;
 								default:
