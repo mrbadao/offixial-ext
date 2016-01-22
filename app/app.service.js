@@ -3,9 +3,24 @@
  *  @uthor: hieunc.
  *  @created 19/01/2016.
  */
-angular.module("officialChromeExt.service", []).
-factory("baseService", function ($http, Config) {
+angular.module("app.service", [
+	'lib.chrome.service'
+]).
+factory("baseService", function ($http, $q, Config, storage) {
 	var services = {};
+
+	services.getApiKey = function () {
+		var deferred = $q.defer();
+		storage.get("Auth", function (object) {
+			if (typeof object.Auth != 'undefined') {
+				deferred.resolve(object.Auth.api_access_key);
+			} else {
+				deferred.reject('403');
+			}
+		});
+
+		return deferred.promise;
+	};
 
 	//call getlanguages API
 	services.getLanguages = function () {

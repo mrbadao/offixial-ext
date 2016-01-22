@@ -7,7 +7,7 @@
 angular.module('officialChromeExt', [
 	'ngRoute',
 	'angular.css.injector',
-	'officialChromeExt.service',
+	'app.service',
 	'module.user',
 	'module.category'
 ], function ($provide) {

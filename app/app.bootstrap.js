@@ -21,7 +21,7 @@ require.config({
 
 		"moduleCategory": "module/category/module.category",
 		"moduleCategoryController": "module/category/controller/module.category.controller",
-		"moduleCategoryService": "",
+		"moduleCategoryService": "module/category/service/module.category.service",
 
 		"appService": "app.service",
 		"app": "app"
@@ -66,14 +66,15 @@ require.config({
 		},
 		"moduleCategoryService": {
 			deps: [
-				'angular'
+				'angular',
+				'appService'
 			]
 		},
 		"moduleCategory": {
 			deps: [
 				'angular',
-				'moduleCategoryController'
-				//'moduleUserService'
+				'moduleCategoryController',
+				'moduleCategoryService'
 			]
 		},
 		"appService": [

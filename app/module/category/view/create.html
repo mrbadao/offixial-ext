@@ -6,6 +6,9 @@
 			<ng-include src="'app/shared/view/breadcrumb/breadcrumb.html'"></ng-include>
 
 			<form class="form-horizontal" ng-submit="submitNewCategory()">
+				<div class="alert alert-danger" ng-show="apiResponseError.hasError">
+					<p ng-repeat="error in apiResponseError.errors">{{error}}</p>
+				</div>
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" ng-repeat="(idx,lang) in langs" ng-class="{active: idx==0}">
 						<a href="#{{lang.Language.id}}" aria-controls="{{lang.Language.id}}" role="tab" data-toggle="tab">
