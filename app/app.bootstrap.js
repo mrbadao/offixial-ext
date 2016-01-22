@@ -20,6 +20,7 @@ require.config({
 		"moduleCategoryController": "module/category/controller/module.category.controller",
 		"moduleCategoryService": "",
 
+		"appService": "app.service",
 		"app": "app",
 		"bootstrap": []
 	},
@@ -70,12 +71,15 @@ require.config({
 				//'moduleUserService'
 			]
 		},
-
+		"appService": [
+			'angular'
+		],
 		"app": {
 			deps: [
 				'angular',
 				'angularRoute',
 				'angularCssInjector',
+				"appService",
 				'moduleUser',
 				'moduleCategory'
 			]

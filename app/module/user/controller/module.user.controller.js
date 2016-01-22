@@ -13,7 +13,7 @@ controller("login", function ($scope, storage, $location, userService) {
 			var promiseCheckToken = userService.checkToken(object.Auth.api_access_key);
 			promiseCheckToken.then(function (d) {
 				if (d.data.status == 200 && d.data.data == object.Auth.api_access_key) {
-					//$location.path("/category");
+					$location.path("/category");
 				}
 			}, function (d) {
 				console.log(d);
@@ -34,8 +34,7 @@ controller("login", function ($scope, storage, $location, userService) {
 				switch ($scope.loginResultData.status) {
 					case 200:
 						console.log($scope.loginResultData);
-						//storage.remove("Auth", null);
-						//storage.set({"Auth": $scope.loginResultData.data}, null);
+						storage.set({"Auth": $scope.loginResultData.data}, null);
 						$location.path("/category");
 						break;
 					default:

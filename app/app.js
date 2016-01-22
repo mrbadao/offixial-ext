@@ -7,6 +7,7 @@
 angular.module('officialChromeExt', [
 	'ngRoute',
 	'angular.css.injector',
+	'officialChromeExt.service',
 	'module.user',
 	'module.category'
 ], function ($provide) {
@@ -74,7 +75,19 @@ run([
 	'$rootScope',
 	'cssInjector',
 	'Config',
-	function ($rootScope, cssInjector, Config) {
+	'baseService',
+	function ($rootScope, cssInjector, Config, baseService) {
+		baseService.getLanguages().then(function (d) {
+			if (d.status == 200 && d.data.status == 200) {
+				$rootScope.langs = d.data.data;
+			}
+			else {
+				$rootScope.langs = {};
+			}
+		}, function (d) {
+			console.log(d);
+		});
+
 		$rootScope.breadcrumb = [
 			{
 				label: "home",
