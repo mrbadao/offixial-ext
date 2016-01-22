@@ -27,21 +27,5 @@ factory("categoryService", function ($http, $location, Config, baseService) {
 		});
 	};
 
-	services.checkToken = function (token) {
-		return $http({
-			headers: {
-				"Content-Type": "application/json",
-				"X-TOKEN": token
-			},
-			method: "POST",
-			dataType: "json",
-			url: Config.url + "users/checkToken"
-		}).then(function successCallback(response) {
-			return response;
-		}, function errorCallback(response) {
-			return response;
-		});
-	};
-
 	return services;
 });
