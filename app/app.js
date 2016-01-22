@@ -12,7 +12,7 @@ angular.module('officialChromeExt', [
 	'module.category'
 ], function ($provide) {
 	$provide.decorator('$window', function ($delegate) {
-		$delegate.history = null;
+		$delegate.history = false;
 		return $delegate;
 	});
 }).constant("Config", {

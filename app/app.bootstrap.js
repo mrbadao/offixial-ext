@@ -12,8 +12,9 @@ require.config({
 		"angularRoute": "../vendor/node_modules/angular-route/angular-route",
 		"angularCssInjector": "../vendor/node_modules/angular-css-injector/angular-css-injector",
 
-		"chromeServiceStorage": "lib/chrome/service/storage",
-		//"angularCssInjector": "../vendor/node_modules/angular-css-injector/angular-css-injector",
+		"chromeService": "lib/chrome/service/lib.chrome.service",
+		"chromeServiceStorage": "lib/chrome/service/storage/lib.chrome.service.storage",
+		"chromeServiceNotification": "lib/chrome/service/notification/lib.chrome.services.notification",
 
 		"moduleUser": "module/user/module.user",
 		"moduleUserController": "module/user/controller/module.user.controller",
@@ -27,18 +28,33 @@ require.config({
 		"app": "app"
 	},
 	shim: {
+		//Boottrap
 		"bootstrap": [
 			'jquery'
 		],
+
+		//Angular
 		"angularRoute": [
 			'angular'
 		],
 		"angularCssInjector": [
 			'angular'
 		],
+
+		//chrome service
 		"chromeServiceStorage": [
 			'angular'
 		],
+		"chromeServiceNotification": [
+			'angular'
+		],
+		"chromeService": [
+			'angular',
+			'chromeServiceStorage',
+			'chromeServiceNotification'
+		],
+
+		// my user module
 		"moduleUserController": {
 			deps: [
 				'angular',
@@ -58,6 +74,7 @@ require.config({
 			]
 		},
 
+		//my category module
 		"moduleCategoryController": {
 			deps: [
 				'angular',
@@ -77,8 +94,11 @@ require.config({
 				'moduleCategoryService'
 			]
 		},
+
+		//Main app
 		"appService": [
-			'angular'
+			'angular',
+			'chromeService'
 		],
 		"app": {
 			deps: [
