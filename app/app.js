@@ -18,8 +18,8 @@ angular.module('officialChromeExt', [
 }).constant("Config", {
 	"url": "http://localhost/api-official/api/",
 	"appIco": {
-		"ico_128": "resources/img/app_icon_128.png",
-		"ico_16": "resources/img/app_icon_16.png"
+		"ico_128": "app/assets/img/ico/favicon_120.png",
+		"ico_16": "app/assets/img/ico/favicon_120.png"
 	},
 	modules: {
 		default: {
@@ -42,6 +42,12 @@ angular.module('officialChromeExt', [
 					"app/assets/css/category/category.css"
 				]
 			}
+		}
+	},
+	"notificationIdConstant": {
+		"CATEGORY": {
+			"TITLE":"Category Create Successful.",
+			"ID": "notificationCreate_id"
 		}
 	}
 }).

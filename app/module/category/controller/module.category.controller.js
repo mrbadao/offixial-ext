@@ -6,7 +6,7 @@
 angular.module('module.category.controller', [
 	'module.category.service'
 ]).
-controller('create', function ($rootScope, $scope, $location, categoryService) {
+controller('create', function ($rootScope, $scope, $location, Config, categoryService, notification) {
 	$scope.go = function (path) {
 		$location.path(path);
 	};
@@ -24,8 +24,8 @@ controller('create', function ($rootScope, $scope, $location, categoryService) {
 	};
 
 	angular.forEach($rootScope.langs, function (lang, idx) {
-		$scope.data.CategoryName[idx] = {name: ''};
-		$scope.data.CategorySeoLink[idx] = {abbr_cd: ''};
+		$scope.data.CategoryName[idx] = {name: '', lang_id: lang.Language.id};
+		$scope.data.CategorySeoLink[idx] = {abbr_cd: '', lang_id: lang.Language.id};
 	});
 
 	$scope.submitNewCategory = function () {
@@ -34,11 +34,15 @@ controller('create', function ($rootScope, $scope, $location, categoryService) {
 							apiKey,
 							{data: $scope.data}
 					).then(function (d) {
-						console.log(d.data);
 						if (d.status == 200) {
 							switch (d.data.status) {
 								case 200:
-
+									notification.pushPotifications(
+											Config.notificationIdConstant.CATEGORY.ID.replace('id',d.data.data.Category.id),
+											'basic', Config.notificationIdConstant.CATEGORY.TITLE,
+											Config.appIco.ico_128,
+											'adad'
+									);
 									break;
 								default:
 									$scope.apiResponseError.hasError = true;
