@@ -10,6 +10,8 @@ angular.module('module.user.controller', [
 controller("login", function ($scope, storage, $location, userService) {
 	storage.get("Auth", function (object) {
 		if (typeof object.Auth != 'undefined') {
+			//TODO debug
+			console.log("Current API Key: ",object.Auth.api_access_key);
 			var promiseCheckToken = userService.checkToken(object.Auth.api_access_key);
 			promiseCheckToken.then(function (d) {
 				if (d.data.status == 200 && d.data.data == object.Auth.api_access_key) {

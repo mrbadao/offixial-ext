@@ -10,7 +10,7 @@ require.config({
 
 		"angular": "../vendor/node_modules/angular/angular",
 		"angularRoute": "../vendor/node_modules/angular-route/angular-route",
-		"angularCssInjector": "../vendor/node_modules/angular-css-injector/angular-css-injector",
+		"angularCssInjector": "../vendor/node_modules/angular-css-injector/angular-css-injector.min",
 
 		"chromeService": "lib/chrome/service/lib.chrome.service",
 		"chromeServiceStorage": "lib/chrome/service/storage/lib.chrome.service.storage",
@@ -23,6 +23,7 @@ require.config({
 		"moduleCategory": "module/category/module.category",
 		"moduleCategoryController": "module/category/controller/module.category.controller",
 		"moduleCategoryService": "module/category/service/module.category.service",
+		"moduleCategoryDirective": "module/category/directive/module.category.directive",
 
 		"appService": "app.service",
 		"app": "app"
@@ -78,13 +79,19 @@ require.config({
 		"moduleCategoryController": {
 			deps: [
 				'angular',
-				'chromeServiceStorage'
+				'chromeServiceStorage',
+				"moduleCategoryDirective"
 			]
 		},
 		"moduleCategoryService": {
 			deps: [
 				'angular',
 				'appService'
+			]
+		},
+		"moduleCategoryDirective": {
+			deps: [
+				'angular'
 			]
 		},
 		"moduleCategory": {

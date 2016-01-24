@@ -5,8 +5,7 @@
  */
 angular.module("module.category.service", [
 	'app.service'
-]).
-factory("categoryService", function ($http, $location, Config, baseService) {
+]).factory("categoryService", function ($http, $location, Config, baseService) {
 	var services = baseService;
 
 	//call createCategory API
@@ -25,6 +24,24 @@ factory("categoryService", function ($http, $location, Config, baseService) {
 		}, function errorCallback(response) {
 			return response;
 		});
+	};
+
+	//call getCaterories API
+	services.getCategoriesRequest = function (apiKey) {
+		return $http({
+			headers: {
+				"Content-Type": "application/json",
+				"X-TOKEN": apiKey
+			},
+			method: "POST",
+			dataType: "json",
+			url: Config.url + "category/getcategories",
+		}).then(function successCallback(response) {
+			return response;
+		}, function errorCallback(response) {
+			return response;
+		});
+
 	};
 
 	return services;

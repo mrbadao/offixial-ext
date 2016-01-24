@@ -1,3 +1,5 @@
 ### ide
 .idea/
 vendor/
+node_modules/
+npm.cmd

@@ -21,6 +21,7 @@ angular.module('officialChromeExt', [
 		"ico_128": "app/assets/img/ico/favicon_120.png",
 		"ico_16": "app/assets/img/ico/favicon_120.png"
 	},
+	"lang": "en",
 	modules: {
 		default: {
 			cssFiles: [
@@ -37,6 +38,11 @@ angular.module('officialChromeExt', [
 			}
 		},
 		category: {
+			list: {
+				cssFiles: [
+					"app/assets/css/category/category.css"
+				]
+			},
 			create: {
 				cssFiles: [
 					"app/assets/css/category/category.css"
@@ -46,13 +52,12 @@ angular.module('officialChromeExt', [
 	},
 	"notificationIdConstant": {
 		"CATEGORY": {
-			"TITLE":"Category",
+			"TITLE": "Category",
 			"ID": "notificationCreate_id",
-			"MSG":"Category Create Successful."
+			"MSG": "Category Create Successful."
 		}
 	}
-}).
-config([
+}).config([
 	'$routeProvider',
 	'$httpProvider',
 	'cssInjectorProvider',
@@ -71,14 +76,19 @@ config([
 				})
 				.when("/category", {
 					caseInsensitiveMatch: true,
+					templateUrl: "app/module/category/view/list.html",
+					module: "category",
+					controller: "list"
+				})
+				.when("/category/create", {
+					caseInsensitiveMatch: true,
 					templateUrl: "app/module/category/view/create.html",
 					module: "category",
 					controller: "create"
 				})
 				.otherwise({redirectTo: '/login'});
 	}
-]).
-run([
+]).run([
 	'$rootScope',
 	'cssInjector',
 	'Config',
