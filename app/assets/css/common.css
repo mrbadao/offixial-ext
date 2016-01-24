@@ -22,9 +22,6 @@ textarea.textarea-control {
 }
 
 .nav-search {
-	position: absolute;
-	bottom: 0;
-	left: 0;
 	height: 48px;
 	padding-top: 6px;
 	border-top: 1px solid #dddddd;
@@ -87,4 +84,9 @@ textarea.textarea-control {
 .breadcrumb li,
 .breadcrumb li a {
 	text-transform: capitalize;
+}
+
+.nav-main .tab-content {
+	height: 459px;
+	overflow-y: scroll;
 }

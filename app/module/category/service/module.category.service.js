@@ -10,11 +10,11 @@ angular.module("module.category.service", [
 
 	//call createCategory API
 	services.createCategoryRequest = function (apiKey, categoryArrayData) {
+		console.log(categoryArrayData);
 		return $http({
 			headers: {
 				"Content-Type": "application/json; charset=utf-8",
-				"Accept": "application/json;charset=utf-8",
-				"Accept-Charset":"charset=utf-8",
+				"Accept": "application/json; charset=utf-8",
 				"X-TOKEN": apiKey
 			},
 			method: "POST",
@@ -33,13 +33,12 @@ angular.module("module.category.service", [
 		return $http({
 			headers: {
 				"Content-Type": "application/json; charset=utf-8",
-				"Accept": "application/json;charset=utf-8",
-				"Accept-Charset":"charset=utf-8",
+				"Accept": "application/json; charset=utf-8",
 				"X-TOKEN": apiKey
 			},
 			method: "POST",
 			dataType: "json",
-			url: Config.url + "category/getcategories",
+			url: Config.url + "category/getcategories"
 		}).then(function successCallback(response) {
 			return response;
 		}, function errorCallback(response) {

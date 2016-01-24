@@ -14,6 +14,7 @@ angular.module('module.category', [
 	'categoryService',
 	function ($rootScope, $location, Config, categoryService) {
 		$rootScope.items = [];
+		$rootScope.moduleCreateLink = '/category/create';
 		$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
 			categoryService.getApiKey().then(function (apiKey) {
 						categoryService.getCategoriesRequest(apiKey)
@@ -27,7 +28,6 @@ angular.module('module.category', [
 														if (category.CategoryName[i].lang_id == Config.lang) {
 															category.Category.name = category.CategoryName[i].name;
 															$rootScope.items.push(category);
-															console.log(category.Category.name);
 															break;
 														}
 													}
