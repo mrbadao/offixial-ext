@@ -21,7 +21,7 @@ angular.module('officialChromeExt', [
 		"ico_128": "app/assets/img/ico/favicon_120.png",
 		"ico_16": "app/assets/img/ico/favicon_120.png"
 	},
-	"lang": "en",
+	"lang": "vi",
 	modules: {
 		default: {
 			cssFiles: [

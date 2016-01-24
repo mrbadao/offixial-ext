@@ -12,7 +12,9 @@ angular.module("module.category.service", [
 	services.createCategoryRequest = function (apiKey, categoryArrayData) {
 		return $http({
 			headers: {
-				"Content-Type": "application/json",
+				"Content-Type": "application/json; charset=utf-8",
+				"Accept": "application/json;charset=utf-8",
+				"Accept-Charset":"charset=utf-8",
 				"X-TOKEN": apiKey
 			},
 			method: "POST",
@@ -30,7 +32,9 @@ angular.module("module.category.service", [
 	services.getCategoriesRequest = function (apiKey) {
 		return $http({
 			headers: {
-				"Content-Type": "application/json",
+				"Content-Type": "application/json; charset=utf-8",
+				"Accept": "application/json;charset=utf-8",
+				"Accept-Charset":"charset=utf-8",
 				"X-TOKEN": apiKey
 			},
 			method: "POST",

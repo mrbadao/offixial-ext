@@ -13,32 +13,44 @@ angular.module('module.category', [
 	'Config',
 	'categoryService',
 	function ($rootScope, $location, Config, categoryService) {
-		$rootScope.items = {};
-		categoryService.getApiKey().then(function (apiKey) {
-					categoryService.getCategoriesRequest(apiKey)
-							.then(function (d) {
-								if (d.status == 200) {
-									switch (d.data.status) {
-										case 200:
-											$rootScope.items = d.data.data;
-											break;
-										default:
-											break;
+		$rootScope.items = [];
+		$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+			categoryService.getApiKey().then(function (apiKey) {
+						categoryService.getCategoriesRequest(apiKey)
+								.then(function (d) {
+									if (d.status == 200) {
+										switch (d.data.status) {
+											case 200:
+												$rootScope.items = [];
+												angular.forEach(d.data.data, function (category, idx) {
+													for (var i = 0; i < category.CategoryName.length; i++) {
+														if (category.CategoryName[i].lang_id == Config.lang) {
+															category.Category.name = category.CategoryName[i].name;
+															$rootScope.items.push(category);
+															console.log(category.Category.name);
+															break;
+														}
+													}
+												});
+												break;
+											default:
+												break;
+										}
 									}
-								}
-							}, function (d) {
-								console.log(d);
-							});
-				}, function (code) {
-					switch (code) {
-						case '403':
-							$location.path('/login');
-							break;
-						default:
-							console.log(code);
-							break;
+								}, function (d) {
+									console.log(d);
+								});
+					}, function (code) {
+						switch (code) {
+							case '403':
+								$location.path('/login');
+								break;
+							default:
+								console.log(code);
+								break;
+						}
 					}
-				}
-		);
+			);
+		});
 	}
 ]);

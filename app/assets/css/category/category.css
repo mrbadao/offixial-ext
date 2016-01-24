@@ -2,10 +2,37 @@
 	height: 600px;
 }
 
-.main-content .tab-content{
+.main-content .tab-content {
 	width: 100%;
 	max-height: 600px;
 	margin-top: 100px;
 	margin-bottom: 40px;
 }
 
+.item-category {
+	cursor: pointer;
+	border-bottom: solid 1px #ccc;
+	padding-bottom: 5px;
+}
+
+.item-category:hover {
+	background-color: #ddd;
+}
+
+.item-category p {
+	font-size: 12px;
+	margin-bottom: 3px;
+}
+
+.item-category .title {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.item-category .title i.glyphicon {
+	padding-right: 8px;
+}
+
+.item-category .title i.glyphicon.text-success{
+	color: #1375cb;
+}

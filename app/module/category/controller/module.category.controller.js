@@ -45,6 +45,7 @@ angular.module('module.category.controller', [
 													Config.appIco.ico_128,
 													Config.notificationIdConstant.CATEGORY.MSG
 											);
+											$scope.go('/category');
 											break;
 										default:
 											$scope.apiResponseError.hasError = true;
@@ -68,6 +69,9 @@ angular.module('module.category.controller', [
 				);
 			};
 		})
-		.controller('list', function ($scope) {
-
+		.controller('list', function ($location, $scope) {
+			$scope.go = function (path) {
+				console.log(path);
+				$location.path(path);
+			};
 		});
