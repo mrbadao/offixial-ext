@@ -9,7 +9,7 @@
 				<div class="alert alert-danger" ng-show="apiResponseError.hasError">
 					<p ng-repeat="error in apiResponseError.errors">{{error}}</p>
 				</div>
-				<ul class="nav nav-tabs" role="tablist">
+				<ul class="nav nav-tabs category" role="tablist">
 					<li role="presentation" ng-repeat="(idx,lang) in langs" ng-class="{active: idx==0}">
 						<a href="#{{lang.Language.id}}" aria-controls="{{lang.Language.id}}" role="tab" data-toggle="tab">
 							{{lang.Language.name}}
@@ -45,6 +45,20 @@
 									   type="text">
 							</div>
 						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-3 col-xs-12" for="parent_id">
+						Parent <span class="required">*</span>
+					</label>
+
+					<div class="col-sm-8 col-xs-12">
+						<input value=""
+							   ng-model='data.CategoryName[idx].name'
+							   name="parent_id" id="parent_id"
+							   class="form-control"
+							   type="text">
 					</div>
 				</div>
 
