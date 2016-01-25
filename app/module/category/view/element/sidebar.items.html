@@ -1,9 +1,10 @@
-<div class=" col-sm-12 col-xs-12 item-category" ng-repeat="item in items | filter:searchKeyWord" ng-click="go('/category/create')">
+<div class=" col-sm-12 col-xs-12 item-category" ng-repeat="item in items | filter:searchKeyWord" ng-click="go('/category/edit/'+item.Category.id)">
 	<h4 class="text-capitalize title">
 		<i class="glyphicon glyphicon-folder-open"
 		   ng-class="{'text-success': !item.Category.del_flag,'text-danger': item.Category.del_flag}">
 		</i>
 		{{item.Category.name}}
 	</h4>
+
 	<p><i class="glyphicon glyphicon-calendar"></i> {{item.Category.created}}</p>
 </div>

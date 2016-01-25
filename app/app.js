@@ -47,6 +47,11 @@ angular.module('officialChromeExt', [
 				cssFiles: [
 					"app/assets/css/category/category.css"
 				]
+			},
+			edit: {
+				cssFiles: [
+					"app/assets/css/category/category.css"
+				]
 			}
 		}
 	},
@@ -85,6 +90,12 @@ angular.module('officialChromeExt', [
 					templateUrl: "app/module/category/view/create.html",
 					module: "category",
 					controller: "create"
+				})
+				.when("/category/edit/:id", {
+					caseInsensitiveMatch: true,
+					templateUrl: "app/module/category/view/edit.html",
+					module: "category",
+					controller: "edit"
 				})
 				.otherwise({redirectTo: '/login'});
 	}

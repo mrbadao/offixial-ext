@@ -71,7 +71,55 @@ angular.module('module.category.controller', [
 		})
 		.controller('list', function ($location, $scope) {
 			$scope.go = function (path) {
-				console.log(path);
 				$location.path(path);
 			};
+		})
+		.controller('edit', function ($routeParams, $location, $rootScope, $scope, categoryService) {
+			var id = $routeParams.id,
+					apiKey = '';
+
+			$scope.go = function (path) {
+				$location.path(path);
+			};
+
+			//category model
+			$scope.data = {
+				"Category": {},
+				"CategoryName": [],
+				"CategorySeoLink": []
+			};
+
+			categoryService.getApiKey().then(function (apiKey) {
+						apiKey = apiKey;
+						categoryService.getCategoryRequest(
+								apiKey,
+								id
+						).then(function (d) {
+							if (d.status == 200) {
+								switch (d.data.status) {
+									case 200:
+										$scope.data = d.data.data;
+										break;
+									default:
+										break;
+								}
+							}
+						}, function (d) {
+							console.log(d);
+						});
+					}, function (code) {
+						switch (code) {
+							case '403':
+								$location.path('/login');
+								break;
+							default:
+								console.log(code);
+								break;
+						}
+					}
+			);
+
+			$scope.submitCategory = function () {
+
+			}
 		});

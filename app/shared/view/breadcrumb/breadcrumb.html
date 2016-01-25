@@ -1,7 +1,7 @@
 <div class="row" ng-show="breadcrumb.length > 1">
 	<ol class="breadcrumb">
 		<li ng-repeat="item in breadcrumb" ng-class="{active: item.link == ''}">
-			<a ng-show="item.link != ''" ng-click="go(item.link)" href="">{{item.label}}</a>
+			<a ng-show="item.link != ''" ng-click="go('{{item.link}}')" href="">{{item.label}}</a>
 			{{item.link == ''? item.label : ''}}
 		</li>
 	</ol>

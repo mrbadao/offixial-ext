@@ -45,5 +45,23 @@ angular.module("module.category.service", [
 
 	};
 
+	//call getCaterory API
+	services.getCategoryRequest = function (apiKey, id) {
+		return $http({
+			headers: {
+				"Content-Type": 'application/json; charset=utf-8',
+				"X-TOKEN": apiKey
+			},
+			method: "GET",
+			dataType: "json",
+			url: Config.url + "category/getcategory/" + id
+		}).then(function successCallback(response) {
+			return response;
+		}, function errorCallback(response) {
+			return response;
+		});
+
+	};
+
 	return services;
 });
